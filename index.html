@@ -3,348 +3,53 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Reymart Centeno | Software Developer</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <title>Reymart Centeno</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    
+
     :root {
       --bg: #0a0a0a;
-      --surface: #111111;
-      --border: #1a1a1a;
       --text: #e5e5e5;
       --muted: #737373;
       --accent: #3b82f6;
-      --accent2: #8b5cf6;
     }
 
     body {
-      font-family: 'Inter', -apple-system, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       background: var(--bg);
       color: var(--text);
-      line-height: 1.6;
+      line-height: 1.5;
       -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    .container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+    .content { text-align: center; padding: 48px 24px; }
 
-    /* NAV */
-    nav {
-      position: fixed; top: 0; width: 100%; z-index: 100;
-      background: rgba(10,10,10,0.8);
-      backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--border);
-    }
-    nav .container {
-      display: flex; justify-content: space-between; align-items: center;
-      height: 64px;
-    }
-    nav .logo { font-weight: 700; font-size: 18px; color: var(--text); text-decoration: none; }
-    nav .links { display: flex; gap: 28px; }
-    nav .links a {
-      color: var(--muted); text-decoration: none; font-size: 14px;
-      font-weight: 500; transition: color 0.2s;
-    }
-    nav .links a:hover { color: var(--text); }
-
-    /* HERO */
-    .hero {
-      padding: 160px 0 100px;
-      border-bottom: 1px solid var(--border);
-    }
-    .hero .tag {
-      display: inline-block;
-      background: rgba(59,130,246,0.1);
-      color: var(--accent);
-      padding: 6px 14px;
-      border-radius: 100px;
-      font-size: 13px;
-      font-weight: 500;
-      margin-bottom: 24px;
-      border: 1px solid rgba(59,130,246,0.2);
-    }
-    .hero h1 {
-      font-size: 52px;
-      font-weight: 800;
-      line-height: 1.1;
-      margin-bottom: 20px;
+    h1 {
+      font-size: clamp(32px, 6vw, 56px);
+      font-weight: 700;
       letter-spacing: -0.02em;
-    }
-    .hero h1 span { 
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    .hero p {
-      font-size: 18px;
-      color: var(--muted);
-      max-width: 560px;
-      line-height: 1.7;
-    }
-    .hero .buttons { margin-top: 32px; display: flex; gap: 12px; flex-wrap: wrap; }
-    .btn {
-      padding: 12px 24px;
-      border-radius: 8px;
-      font-size: 14px;
-      font-weight: 600;
-      text-decoration: none;
-      transition: all 0.2s;
-      cursor: pointer;
-      border: none;
-    }
-    .btn-primary { background: var(--accent); color: #fff; }
-    .btn-primary:hover { background: #2563eb; }
-    .btn-outline {
-      background: transparent; color: var(--text);
-      border: 1px solid var(--border);
-    }
-    .btn-outline:hover { border-color: var(--muted); }
-
-    /* SECTION */
-    section { padding: 80px 0; border-bottom: 1px solid var(--border); }
-    .section-title {
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--accent);
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
       margin-bottom: 12px;
     }
-    section h2 {
-      font-size: 32px;
-      font-weight: 700;
-      margin-bottom: 40px;
-      letter-spacing: -0.01em;
-    }
 
-    /* PROJECTS */
-    .projects { display: flex; flex-direction: column; gap: 16px; }
-    .project {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 28px;
-      transition: border-color 0.2s;
-    }
-    .project:hover { border-color: #333; }
-    .project-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px; }
-    .project h3 { font-size: 18px; font-weight: 600; }
-    .project-links { display: flex; gap: 12px; }
-    .project-links a {
-      color: var(--muted); text-decoration: none; font-size: 13px;
-      font-weight: 500; transition: color 0.2s;
-    }
-    .project-links a:hover { color: var(--text); }
-    .project p { color: var(--muted); font-size: 14px; line-height: 1.7; margin-bottom: 16px; }
-    .tags { display: flex; gap: 8px; flex-wrap: wrap; }
-    .tag-sm {
-      background: rgba(139,92,246,0.1);
-      color: var(--accent2);
-      padding: 4px 10px;
-      border-radius: 6px;
-      font-size: 12px;
-      font-weight: 500;
-    }
-
-    /* SKILLS */
-    .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 16px; }
-    .skill-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 24px;
-    }
-    .skill-card h3 {
-      font-size: 15px;
-      font-weight: 600;
-      margin-bottom: 8px;
-    }
-    .skill-card p { font-size: 13px; color: var(--muted); line-height: 1.6; }
-
-    /* CONTACT */
-    .contact-links { display: flex; gap: 16px; flex-wrap: wrap; }
-    .contact-links a {
-      display: flex; align-items: center; gap: 8px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 14px 20px;
-      color: var(--text);
+    a.email {
+      color: var(--accent);
+      font-size: clamp(15px, 2.5vw, 18px);
       text-decoration: none;
-      font-size: 14px;
-      font-weight: 500;
-      transition: border-color 0.2s;
-    }
-    .contact-links a:hover { border-color: var(--accent); }
-    .contact-links svg { width: 18px; height: 18px; fill: var(--muted); }
-
-    /* FOOTER */
-    footer {
-      padding: 40px 0;
-      text-align: center;
-      color: var(--muted);
-      font-size: 13px;
     }
 
-    @media (max-width: 640px) {
-      .hero h1 { font-size: 36px; }
-      .hero p { font-size: 16px; }
-      section h2 { font-size: 26px; }
-      nav .links { gap: 16px; }
-      nav .links a { font-size: 13px; }
-    }
+    a.email:hover { text-decoration: underline; }
   </style>
 </head>
 <body>
 
-<nav>
-  <div class="container">
-    <a href="#" class="logo">reymart.dev</a>
-    <div class="links">
-      <a href="#projects">Projects</a>
-      <a href="#skills">Skills</a>
-      <a href="#contact">Contact</a>
-    </div>
-  </div>
-</nav>
-
-<div class="container">
-  <section class="hero">
-    <h1>Building software<br>that <span>matters</span></h1>
-    <p>Full-stack developer specializing in mobile apps, cloud infrastructure, and modern web technologies. Currently building tools that solve real problems.</p>
-    <div class="buttons">
-      <a href="#projects" class="btn btn-primary">View Projects</a>
-      <a href="https://github.com/groovyrey" class="btn btn-outline" target="_blank">GitHub</a>
-    </div>
-  </section>
-
-  <section id="projects">
-    <div class="section-title">Projects</div>
-    <h2>What I've Built</h2>
-    <div class="projects">
-      <div class="project">
-        <div class="project-header">
-          <h3>LCC Hub</h3>
-          <div class="project-links">
-            <a href="https://github.com/groovyrey/lcchub" target="_blank">Source</a>
-          </div>
-        </div>
-        <p>A modern student portal for La Concepcion College. Cross-platform mobile app built with Flutter, featuring real-time grade tracking, class schedules, and community features. Deployed with CI/CD via GitHub Actions.</p>
-        <div class="tags">
-          <span class="tag-sm">Flutter</span>
-          <span class="tag-sm">Dart</span>
-          <span class="tag-sm">REST API</span>
-          <span class="tag-sm">CI/CD</span>
-        </div>
-      </div>
-
-      <div class="project">
-        <div class="project-header">
-          <h3>Luface</h3>
-          <div class="project-links">
-            <a href="https://github.com/groovyrey/luface" target="_blank">Source</a>
-          </div>
-        </div>
-        <p>A face biometric infrastructure system enabling easy face authentication integration for web applications. Provides hosted UI services and API endpoints for seamless developer experience.</p>
-        <div class="tags">
-          <span class="tag-sm">Python</span>
-          <span class="tag-sm">Biometrics</span>
-          <span class="tag-sm">API</span>
-          <span class="tag-sm">Web</span>
-        </div>
-      </div>
-
-      <div class="project">
-        <div class="project-header">
-          <h3>Portal</h3>
-          <div class="project-links">
-            <a href="https://github.com/groovyrey/portal" target="_blank">Source</a>
-          </div>
-        </div>
-        <p>An AI-enhanced student portal built with Next.js 16 and Tailwind CSS. Transforms static institutional data into a dynamic experience with real-time grade tracking, interactive schedules, and modern UI.</p>
-        <div class="tags">
-          <span class="tag-sm">Next.js</span>
-          <span class="tag-sm">TypeScript</span>
-          <span class="tag-sm">Tailwind CSS</span>
-          <span class="tag-sm">AI</span>
-        </div>
-      </div>
-
-      <div class="project">
-        <div class="project-header">
-          <h3>Server App</h3>
-          <div class="project-links">
-            <a href="https://github.com/groovyrey/server-app" target="_blank">Source</a>
-          </div>
-        </div>
-        <p>A REST API backend built with Python/Flask, containerized with Docker and deployed with Gunicorn. Features token-based authentication, database integration, and automated CI/CD pipeline.</p>
-        <div class="tags">
-          <span class="tag-sm">Python</span>
-          <span class="tag-sm">Flask</span>
-          <span class="tag-sm">Docker</span>
-          <span class="tag-sm">PostgreSQL</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="skills">
-    <div class="section-title">Skills</div>
-    <h2>Tech Stack</h2>
-    <div class="skills-grid">
-      <div class="skill-card">
-        <h3>Mobile Development</h3>
-        <p>Flutter, Dart, Android, iOS, Cross-platform apps</p>
-      </div>
-      <div class="skill-card">
-        <h3>Backend</h3>
-        <p>Python, Flask, Node.js, REST APIs, Go</p>
-      </div>
-      <div class="skill-card">
-        <h3>Frontend</h3>
-        <p>Next.js, React, TypeScript, Tailwind CSS, HTML/CSS</p>
-      </div>
-      <div class="skill-card">
-        <h3>DevOps & Cloud</h3>
-        <p>Docker, CI/CD, GitHub Actions, Azure, Linux</p>
-      </div>
-      <div class="skill-card">
-        <h3>Databases</h3>
-        <p>PostgreSQL, SQLite, MongoDB, Firebase</p>
-      </div>
-      <div class="skill-card">
-        <h3>Tools</h3>
-        <p>Git, VS Code, Figma, Postman, Jira</p>
-      </div>
-    </div>
-  </section>
-
-  <section id="contact">
-    <div class="section-title">Contact</div>
-    <h2>Let's Connect</h2>
-    <div class="contact-links">
-      <a href="mailto:reymartcenteno03@gmail.com">
-        <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-        Email
-      </a>
-      <a href="https://github.com/groovyrey" target="_blank">
-        <svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-        GitHub
-      </a>
-      <a href="https://linkedin.com/in/reymartcenteno" target="_blank">
-        <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-        LinkedIn
-      </a>
-    </div>
-  </section>
+<div class="content">
+  <h1>Reymart Centeno</h1>
+  <a class="email" href="mailto:reymartcenteno03@gmail.com">reymartcenteno03@gmail.com</a>
 </div>
-
-<footer>
-  <div class="container">
-    <p>&copy; 2026 Reymart Centeno. Built with passion.</p>
-  </div>
-</footer>
 
 </body>
 </html>
