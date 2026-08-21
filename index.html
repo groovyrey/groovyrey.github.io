@@ -18,7 +18,10 @@
       --accent2: #a855f7;
     }
 
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+      overflow-x: clip;
+    }
 
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -31,7 +34,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      overflow-x: hidden;
+      overflow-x: clip;
       position: relative;
     }
 
@@ -119,8 +122,11 @@
     a.email:active { transform: translateY(0); }
 
     .marquee {
+      --pad: 24px;
       margin-top: 16px;
-      width: 100%;
+      margin-inline: calc(-1 * var(--pad));
+      width: calc(100% + 2 * var(--pad));
+      max-width: 100vw;
       overflow: hidden;
       padding: 52px 0 12px;
       mask-image: linear-gradient(90deg, transparent, black 12%, black 88%, transparent);
@@ -129,6 +135,7 @@
     .marquee-track {
       display: flex;
       width: max-content;
+      will-change: transform;
       animation: marquee 26s linear infinite;
     }
     .marquee:hover .marquee-track { animation-play-state: paused; }
@@ -150,10 +157,9 @@
       align-items: center;
       justify-content: center;
       border-radius: 16px;
-      background: rgba(255, 255, 255, 0.04);
+      background: rgba(255, 255, 255, 0.05);
       border: 1px solid rgba(255, 255, 255, 0.08);
-      backdrop-filter: blur(8px);
-      transition: all 0.25s ease;
+      transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease;
     }
     .tech:hover {
       transform: translateY(-4px);
@@ -183,6 +189,15 @@
     .tech:hover::after {
       opacity: 1;
       transform: translateX(-50%) translateY(0);
+    }
+
+    @media (max-width: 640px) {
+      .content { padding: 40px 20px; }
+      .marquee { --pad: 20px; padding: 44px 0 8px; }
+      .stack { gap: 10px; padding-right: 10px; }
+      .tech { width: 46px; height: 46px; border-radius: 13px; }
+      .tech svg { width: 24px; height: 24px; }
+      .glow { filter: blur(90px); opacity: 0.28; }
     }
 
     @media (prefers-reduced-motion: reduce) {
