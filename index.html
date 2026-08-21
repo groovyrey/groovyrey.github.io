@@ -132,6 +132,17 @@
     }
     a.email:active { transform: translateY(0); }
 
+    /* HEADER CARD */
+    .container {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 28px;
+      padding: 44px 32px;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+    }
+
     /* SOCIALS */
     .socials {
       margin-top: 28px;
@@ -235,6 +246,7 @@
 
     @media (max-width: 640px) {
       .content { padding: 40px 20px; }
+      .container { padding: 32px 20px; border-radius: 22px; }
       .marquee { --pad: 20px; padding: 44px 0 8px; }
       .stack { gap: 10px; padding-right: 10px; }
       .tech { width: 46px; height: 46px; border-radius: 13px; }
