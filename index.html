@@ -3,58 +3,134 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Reymart Centeno</title>
+  <title>Dev Groovyrey</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
-      --bg: #0a0a0a;
-      --text: #e5e5e5;
-      --muted: #737373;
-      --accent: #3b82f6;
+      --bg: #050507;
+      --text: #f4f4f5;
+      --muted: #a1a1aa;
+      --accent: #6366f1;
+      --accent2: #a855f7;
     }
 
+    html { scroll-behavior: smooth; }
+
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
       background: var(--bg);
       color: var(--text);
       line-height: 1.5;
       -webkit-font-smoothing: antialiased;
       min-height: 100vh;
+      min-height: 100dvh;
       display: flex;
       align-items: center;
       justify-content: center;
+      overflow-x: hidden;
+      position: relative;
     }
 
-    .content { text-align: center; padding: 48px 24px; }
+    .glow {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(120px);
+      opacity: 0.35;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .glow-1 {
+      width: 480px; height: 480px;
+      background: radial-gradient(circle, var(--accent), transparent 70%);
+      top: -160px; left: -120px;
+      animation: drift 18s ease-in-out infinite alternate;
+    }
+    .glow-2 {
+      width: 420px; height: 420px;
+      background: radial-gradient(circle, var(--accent2), transparent 70%);
+      bottom: -140px; right: -100px;
+      animation: drift 22s ease-in-out infinite alternate-reverse;
+    }
+    @keyframes drift {
+      from { transform: translate(0, 0) scale(1); }
+      to   { transform: translate(60px, 40px) scale(1.15); }
+    }
+
+    .grid-overlay {
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 56px 56px;
+      mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+      -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 48px 24px;
+      animation: rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
 
     h1 {
-      font-size: clamp(32px, 6vw, 56px);
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      margin-bottom: 12px;
+      font-size: clamp(40px, 8vw, 76px);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+      margin-bottom: 32px;
+      background: linear-gradient(135deg, var(--text) 40%, var(--accent) 75%, var(--accent2));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
     a.email {
       display: inline-block;
-      margin-top: 8px;
-      padding: 12px 28px;
-      background: var(--accent);
-      color: #fff;
+      padding: 14px 32px;
       font-size: 16px;
       font-weight: 600;
+      color: #fff;
       text-decoration: none;
-      border-radius: 8px;
-      transition: background 0.2s;
+      border-radius: 999px;
+      background: rgba(99, 102, 241, 0.12);
+      border: 1px solid rgba(99, 102, 241, 0.35);
+      backdrop-filter: blur(8px);
+      transition: all 0.25s ease;
     }
+    a.email:hover {
+      background: rgba(99, 102, 241, 0.28);
+      border-color: rgba(139, 92, 246, 0.6);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(99, 102, 241, 0.35);
+    }
+    a.email:active { transform: translateY(0); }
 
-    a.email:hover { background: #2563eb; }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+    }
   </style>
 </head>
 <body>
 
+<div class="glow glow-1"></div>
+<div class="glow glow-2"></div>
+<div class="grid-overlay"></div>
+
 <div class="content">
-  <h1>Reymart Centeno</h1>
+  <h1>Dev Groovyrey</h1>
   <a class="email" href="mailto:reymartcenteno03@gmail.com">Email Me!</a>
 </div>
 
