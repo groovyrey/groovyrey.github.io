@@ -63,6 +63,39 @@
       to   { transform: translate(60px, 40px) scale(1.15); }
     }
 
+    /* TOP LIGHT */
+    .glow-top {
+      position: fixed;
+      top: -240px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(920px, 140vw);
+      height: 440px;
+      background: radial-gradient(ellipse at center,
+        rgba(99, 102, 241, 0.55),
+        rgba(168, 85, 247, 0.22) 45%,
+        transparent 72%);
+      filter: blur(70px);
+      opacity: 0.55;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .top-beam {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg,
+        transparent 5%,
+        rgba(99, 102, 241, 0.7) 35%,
+        rgba(168, 85, 247, 0.9) 50%,
+        rgba(99, 102, 241, 0.7) 65%,
+        transparent 95%);
+      pointer-events: none;
+      z-index: 3;
+    }
+
     .grid-overlay {
       position: fixed;
       inset: 0;
@@ -261,8 +294,10 @@
 </head>
 <body>
 
+<div class="glow glow-top"></div>
 <div class="glow glow-1"></div>
 <div class="glow glow-2"></div>
+<div class="top-beam"></div>
 <div class="grid-overlay"></div>
 
 <div class="content">
